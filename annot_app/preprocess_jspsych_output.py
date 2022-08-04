@@ -9,7 +9,7 @@ def extract_motion_levels(motion_df):
     motion_level = []
     for index, row in motion_df.iterrows():
         if index > 0:
-            image_id.append(row['stimulus'].split('/')[1][6:].split('.')[0])
+            image_id.append(int(row['stimulus'].split('/')[1].split('.')[0]))
             motion_level.append(int(row['response']))
     motion_output = pd.DataFrame({'73KID': image_id, 'motion_level': motion_level})
     return motion_output
@@ -20,7 +20,7 @@ def extract_interaction_types(interaction_df):
     interaction_type = []
     for index, row in interaction_df.iterrows():
         if index > 0:
-            image_id.append(row['stimulus'].split('/')[1][6:].split('.')[0])
+            image_id.append(int(row['stimulus'].split('/')[1].split('.')[0]))
             if row['response']=='0':
                 interaction_type.append('Unrelated people')
             elif row['response']=='1':
@@ -37,11 +37,11 @@ def main():
     interaction_df = pd.read_csv('interaction.csv')
 
     ## Extract the ratings for each image id
-    motion_output = extract_motion_levels(motion_df)
+    # motion_output = extract_motion_levels(motion_df)
     interaction_output = extract_interaction_types(interaction_df)
 
     ## Save the annotations
-    motion_output.to_csv('motion_annotations.csv', index=False)
+    # motion_output.to_csv('motion_annotations.csv', index=False)
     interaction_output.to_csv('interaction_annotations.csv', index=False)
 
 if __name__=="__main__":
