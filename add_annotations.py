@@ -13,10 +13,10 @@ def add_coco_annot(response_df):
     return response_df
 
 def add_manual_annot(response_df):
-    # motion_annotations = pd.read_csv('annot_app/motion_annotations.csv')
+    motion_annotations = pd.read_csv('annot_app/motion_annotations.csv')
     interaction_annotations = pd.read_csv('annot_app/interaction_annotations.csv')
     tmp =  pd.merge(response_df, interaction_annotations, on="73KID", how="outer")
-    # tmp =  pd.merge(tmp, motion_annotations, on="73KID", how="outer")
+    tmp =  pd.merge(tmp, motion_annotations, on="73KID", how="outer")
     return tmp
 
 def add_shared1000(response_df):

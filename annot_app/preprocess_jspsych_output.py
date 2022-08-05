@@ -37,12 +37,12 @@ def main():
     interaction_df = pd.read_csv('interaction.csv')
 
     ## Extract the ratings for each image id
-    # motion_output = extract_motion_levels(motion_df)
+    motion_output = extract_motion_levels(motion_df)
     interaction_output = extract_interaction_types(interaction_df)
 
     ## Save the annotations
-    # motion_output.to_csv('motion_annotations.csv', index=False)
-    interaction_output.to_csv('interaction_annotations.csv', index=False)
+    motion_output.to_csv('motion_annotations.csv', index=False)
+    # interaction_output.to_csv('interaction_annotations.csv', index=False)
 
 if __name__=="__main__":
     main()
